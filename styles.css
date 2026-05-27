@@ -913,13 +913,13 @@ footer .footer-meta { color: var(--muted); }
   body { font-size: 17px; }
   p { font-size: 1.02rem; line-height: 1.72; }
 
-  /* TOPBAR — центрированный «Июнь 2026» */
+  /* TOPBAR — бренд по центру */
   .topbar {
     padding: 14px var(--gutter);
     justify-content: center;
   }
-  .brand { display: none; }
-  .brand-mobile { display: inline-block; text-align: center; }
+  .brand { font-size: 0.78rem; letter-spacing: 0.4em; text-align: center; }
+  .brand-mobile { display: none; }
 
   /* HERO */
   .hero { min-height: auto; padding-top: 78px; padding-bottom: 56px; }
@@ -983,16 +983,41 @@ footer .footer-meta { color: var(--muted); }
   .event.reverse {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 28px;
   }
   .event .event-visual,
   .event.reverse .event-visual { order: 0; }
   .event .event-meta-col,
   .event.reverse .event-meta-col { order: 1; }
 
-  .event-meta-col .num { font-size: 0.8rem; gap: 8px; }
-  .event-meta-col .num-roman { font-size: 1.4rem; }
-  .event-meta-col h2 { font-size: 2.2rem; letter-spacing: 0.04em; }
+  /* Скрываем словесную нумерацию (она дублируется римской цифрой на фото и штампом даты) */
+  .event-meta-col .num { display: none; }
+
+  /* Вместо неё — тонкая золотая черта с бусиной как декоративная связка между фото и заголовком */
+  .event-meta-col h2 {
+    position: relative;
+    padding-top: 36px;
+    font-size: 2.2rem;
+    letter-spacing: 0.04em;
+  }
+  .event-meta-col h2::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.55;
+  }
+  .event-meta-col h2::after {
+    content: "";
+    position: absolute;
+    top: -3px; left: 56px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translateX(-50%);
+  }
   .event-meta-col .question { font-size: 1.08rem; }
   .event-meta-col .specs { font-size: 0.88rem; gap: 12px 18px; }
   .event-meta-col .specs dt { font-size: 0.7rem; letter-spacing: 0.25em; }
