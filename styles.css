@@ -166,6 +166,15 @@ p { font-size: 1rem; line-height: 1.75; }
   color: var(--cream);
   font-weight: 300;
 }
+.brand-mobile {
+  display: none;
+  font-family: var(--serif);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 300;
+  font-size: 0.84rem;
+}
 .topnav {
   display: flex;
   gap: 36px;
@@ -904,39 +913,52 @@ footer .footer-meta { color: var(--muted); }
   body { font-size: 17px; }
   p { font-size: 1.02rem; line-height: 1.72; }
 
+  /* TOPBAR — центрированный «Июнь 2026» */
+  .topbar {
+    padding: 14px var(--gutter);
+    justify-content: center;
+  }
+  .brand { display: none; }
+  .brand-mobile { display: inline-block; text-align: center; }
+
   /* HERO */
-  .hero { min-height: auto; padding-top: 80px; padding-bottom: 60px; }
-  .hero-inner { padding-top: 20px; gap: 32px; }
+  .hero { min-height: auto; padding-top: 78px; padding-bottom: 56px; }
+  .hero-inner { padding-top: 16px; gap: 28px; }
   .hero h1 { font-size: 4rem; margin-bottom: 24px; letter-spacing: 0.03em; }
-  .hero .sub { font-size: 1.08rem; margin-bottom: 36px; }
+  .hero .sub { font-size: 1.05rem; margin-bottom: 32px; }
   .hero-scroll { display: none; }
 
+  /* Даты — все 5 в одну строку, равной ширины */
   .hero-dates {
-    gap: 6px 8px;
-    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-top: 28px;
   }
   .hero-date {
-    padding: 10px 14px;
-    min-width: 56px;
-    min-height: 56px;
+    padding: 10px 4px;
+    min-width: 0;
+    min-height: 60px;
+    gap: 2px;
   }
-  .hero-date .d { font-size: 1.8rem; }
-  .hero-date .m { font-size: 0.62rem; letter-spacing: 0.25em; }
+  .hero-date .d { font-size: 1.55rem; }
+  .hero-date .m { font-size: 0.55rem; letter-spacing: 0.18em; }
   .hero-date-sep { display: none; }
-  .hero-tags { margin-top: 24px; font-size: 0.7rem; letter-spacing: 0.3em; }
-
-  /* TOPBAR */
-  .topbar { padding: 16px var(--gutter); }
-  .brand { font-size: 0.85rem; letter-spacing: 0.4em; }
+  .hero-tags { margin-top: 22px; font-size: 0.68rem; letter-spacing: 0.3em; justify-content: flex-start; }
 
   /* SECTION padding */
   .section { padding: 64px 0; }
 
-  /* MANIFESTO */
+  /* MANIFESTO — текст в 2 строки за счёт чуть меньшего кегля и плотного межстрочного */
   .manifesto .quote { font-size: 1.5rem; margin: 32px auto 8px; }
-  .manifesto-card .card-num { font-size: 1.3rem; margin-bottom: 12px; }
-  .manifesto-card p { font-size: 1.05rem; }
-  .manifesto-card { padding: 26px 22px; }
+  .manifesto-grid { gap: 18px; }
+  .manifesto-card { padding: 22px 22px 24px; }
+  .manifesto-card .card-num { font-size: 1.15rem; margin-bottom: 10px; }
+  .manifesto-card p {
+    font-size: 0.97rem;
+    line-height: 1.42;
+    text-wrap: balance;
+  }
 
   /* TRACK */
   .track-list { margin-top: 36px; gap: 0; }
@@ -956,7 +978,18 @@ footer .footer-meta { color: var(--muted); }
   .track-card-date { grid-area: date; font-size: 0.72rem; letter-spacing: 0.28em; }
   .track-final p { font-size: 1.08rem; }
 
-  /* EVENTS */
+  /* EVENTS — порядок: всегда сначала фото, потом текст */
+  .event,
+  .event.reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .event .event-visual,
+  .event.reverse .event-visual { order: 0; }
+  .event .event-meta-col,
+  .event.reverse .event-meta-col { order: 1; }
+
   .event-meta-col .num { font-size: 0.8rem; gap: 8px; }
   .event-meta-col .num-roman { font-size: 1.4rem; }
   .event-meta-col h2 { font-size: 2.2rem; letter-spacing: 0.04em; }
