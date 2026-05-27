@@ -636,19 +636,258 @@ footer .footer-tg {
 footer .footer-tg:hover { color: var(--cream); }
 footer .footer-meta { color: var(--muted); }
 
-/* ─── Адаптив ─── */
+/* ═══════════════════════════════════════════════════════════════════
+   ВТОРАЯ ИТЕРАЦИЯ — крупные даты, тезисы манифеста, новый трек,
+   нумерация событий, mobile-first
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── HERO: большие кликабельные даты ─── */
+.hero-dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+  margin-top: 56px;
+}
+.hero-date {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 20px;
+  min-width: 64px;
+  min-height: 64px;
+  border: 1px solid rgba(182, 153, 104, 0.35);
+  text-decoration: none;
+  color: var(--cream);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.hero-date:hover,
+.hero-date:focus-visible {
+  border-color: var(--gold);
+  background: rgba(182, 153, 104, 0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+.hero-date .d {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--gold);
+}
+.hero-date .m {
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  opacity: 0.75;
+}
+.hero-date-sep {
+  font-family: var(--serif);
+  color: rgba(182, 153, 104, 0.4);
+  font-size: 1.3rem;
+  user-select: none;
+  align-self: center;
+}
+.hero-tags {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 32px;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(239, 237, 230, 0.55);
+}
+.hero-tags span:nth-child(even) { color: var(--gold); }
+
+/* ─── Манифест: сетка тезисов ─── */
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 48px;
+  text-align: left;
+}
+.manifesto-card {
+  border: 1px solid var(--rule);
+  padding: 36px 32px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.3);
+}
+.manifesto-card .card-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+.manifesto-card p {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  color: var(--navy);
+  margin: 0;
+}
+.manifesto-card p em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ─── Новый трек июня (вертикальный с карточками) ─── */
+.track-list {
+  list-style: none;
+  padding: 0;
+  margin: 60px auto 0;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.track-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.track-q {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--cream);
+  padding: 0 16px;
+  max-width: 560px;
+}
+.track-arrow {
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin: 14px 0 16px;
+  opacity: 0.7;
+  user-select: none;
+}
+.track-card {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px 24px;
+  align-items: center;
+  padding: 22px 28px;
+  border: 1px solid var(--rule);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--cream);
+  text-decoration: none;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 26px;
+}
+.track-card:hover,
+.track-card:focus-visible {
+  background: rgba(182, 153, 104, 0.08);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  outline: none;
+}
+.track-card-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--gold);
+  min-width: 44px;
+  text-align: center;
+}
+.track-card-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 1.3;
+}
+.track-card-date {
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  white-space: nowrap;
+}
+
+.track-final {
+  margin-top: 36px;
+  text-align: center;
+}
+.track-final p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.5;
+  color: rgba(239, 237, 230, 0.8);
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+.track-final p em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ─── Новый стиль нумерации мероприятий ─── */
+.event-meta-col .num {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+.event-meta-col .num-label {
+  letter-spacing: 0.32em;
+  color: var(--gold);
+}
+.event-meta-col .num-roman {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--gold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+.event-meta-col .num-sep { opacity: 0.5; }
+.section.dark .event-meta-col .num { color: rgba(239, 237, 230, 0.65); }
+
+/* ═════════════════════ АДАПТИВ — desktop ≥ 901 ═════════════════════ */
+@media (min-width: 901px) {
+  /* На широком — манифест-тезисы в 4 колонки */
+  .manifesto-grid { grid-template-columns: repeat(4, 1fr); }
+
+  /* На широком — карточки трека получают «полосу» слева, имитируя ленту маршрута */
+  .track-list { max-width: 720px; }
+}
+
+/* ═════════════════════ АДАПТИВ — tablet/mobile ≤ 900 ═════════════════════ */
 @media (max-width: 900px) {
   .topnav { display: none; }
   .rail { display: none; }
-  .event { grid-template-columns: 1fr; gap: 60px; }
+  .event { grid-template-columns: 1fr; gap: 48px; }
   .event.reverse { grid-template-columns: 1fr; }
   .event.reverse .event-visual { order: 0; }
-  .track-grid { grid-template-columns: 1fr; gap: 40px; }
-  .track-grid::before { display: none; }
-  .track-step { padding: 24px 0; border-top: 1px solid var(--rule); }
-  .track-step:first-child { border-top: none; }
-  .track-step .step-q { max-width: none; }
   .event-details .content { grid-template-columns: 1fr; gap: 24px; }
+
+  .manifesto-grid { grid-template-columns: 1fr; gap: 24px; }
+  .manifesto-card { padding: 28px 24px; }
+
   footer .footer-inner {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -657,10 +896,99 @@ footer .footer-meta { color: var(--muted); }
   footer .footer-tg, footer .footer-meta { text-align: center; }
 }
 
+/* ═════════════════════ MOBILE FIRST — phones ≤ 560 ═════════════════════ */
 @media (max-width: 560px) {
-  .hero-meta { gap: 12px 28px; }
-  .event-visual .stamp { left: 18px; bottom: 18px; padding: 18px 22px; }
-  .event-visual .stamp .day { font-size: 2.2rem; }
+  :root {
+    --gutter: 22px;
+  }
+  body { font-size: 17px; }
+  p { font-size: 1.02rem; line-height: 1.72; }
+
+  /* HERO */
+  .hero { min-height: auto; padding-top: 80px; padding-bottom: 60px; }
+  .hero-inner { padding-top: 20px; gap: 32px; }
+  .hero h1 { font-size: 4rem; margin-bottom: 24px; letter-spacing: 0.03em; }
+  .hero .sub { font-size: 1.08rem; margin-bottom: 36px; }
+  .hero-scroll { display: none; }
+
+  .hero-dates {
+    gap: 6px 8px;
+    margin-top: 32px;
+  }
+  .hero-date {
+    padding: 10px 14px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+  .hero-date .d { font-size: 1.8rem; }
+  .hero-date .m { font-size: 0.62rem; letter-spacing: 0.25em; }
+  .hero-date-sep { display: none; }
+  .hero-tags { margin-top: 24px; font-size: 0.7rem; letter-spacing: 0.3em; }
+
+  /* TOPBAR */
+  .topbar { padding: 16px var(--gutter); }
+  .brand { font-size: 0.85rem; letter-spacing: 0.4em; }
+
+  /* SECTION padding */
+  .section { padding: 64px 0; }
+
+  /* MANIFESTO */
+  .manifesto .quote { font-size: 1.5rem; margin: 32px auto 8px; }
+  .manifesto-card .card-num { font-size: 1.3rem; margin-bottom: 12px; }
+  .manifesto-card p { font-size: 1.05rem; }
+  .manifesto-card { padding: 26px 22px; }
+
+  /* TRACK */
+  .track-list { margin-top: 36px; gap: 0; }
+  .track-q { font-size: 1.12rem; }
+  .track-arrow { margin: 10px 0 12px; font-size: 1.2rem; }
+  .track-card {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "num name"
+      "num date";
+    gap: 4px 16px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .track-card-num { grid-area: num; font-size: 2.4rem; min-width: 38px; }
+  .track-card-name { grid-area: name; font-size: 0.95rem; }
+  .track-card-date { grid-area: date; font-size: 0.72rem; letter-spacing: 0.28em; }
+  .track-final p { font-size: 1.08rem; }
+
+  /* EVENTS */
+  .event-meta-col .num { font-size: 0.8rem; gap: 8px; }
+  .event-meta-col .num-roman { font-size: 1.4rem; }
+  .event-meta-col h2 { font-size: 2.2rem; letter-spacing: 0.04em; }
+  .event-meta-col .question { font-size: 1.08rem; }
+  .event-meta-col .specs { font-size: 0.88rem; gap: 12px 18px; }
+  .event-meta-col .specs dt { font-size: 0.7rem; letter-spacing: 0.25em; }
+  .event-details summary { font-size: 0.78rem; letter-spacing: 0.25em; padding: 16px 0; }
+
+  /* CTA — крупнее тап-зона */
+  .cta {
+    width: 100%;
+    justify-content: center;
+    padding: 20px 24px;
+    font-size: 0.9rem;
+    letter-spacing: 0.28em;
+  }
+
+  /* Event visual */
+  .event-visual { aspect-ratio: 3 / 4; }
+  .event-visual .stamp { left: 18px; bottom: 18px; padding: 14px 18px; }
+  .event-visual .stamp .day { font-size: 2rem; }
+  .event-visual .stamp .month { font-size: 0.66rem; }
+  .event-visual .numeral { top: 18px; right: 22px; font-size: 2.2rem; }
+  .event-visual .frame { inset: 12px; }
+
+  /* CLOSING */
+  .closing h2 { font-size: 1.9rem; }
+  .closing p { font-size: 1rem; }
+
+  /* FOOTER */
+  footer { padding: 44px var(--gutter) 32px; }
+  footer .footer-inner { gap: 18px; }
 }
 
 /* ─── Анимации при появлении ─── */
