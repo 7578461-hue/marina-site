@@ -846,6 +846,149 @@ footer .footer-meta { color: var(--muted); }
   font-style: italic;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   ОБЗОРНЫЙ КАЛЕНДАРЬ — главное на сайте: когда, что, где
+   ═══════════════════════════════════════════════════════════════════ */
+.calendar-section { padding: clamp(70px, 10vw, 130px) 0; }
+
+.calendar-table {
+  margin-top: 60px;
+  border-top: 1px solid var(--rule);
+}
+
+.cal-row {
+  display: grid;
+  grid-template-columns: 120px 60px 1fr 40px;
+  gap: 28px;
+  align-items: center;
+  padding: 28px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.3s ease, padding 0.3s ease;
+}
+.cal-row:hover {
+  background: rgba(182, 153, 104, 0.06);
+  padding-left: 20px;
+}
+
+.cal-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--serif);
+  line-height: 1;
+}
+.cal-date .cal-day {
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--gold);
+}
+.cal-date .cal-month {
+  font-size: 0.78rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  color: var(--muted);
+}
+.cal-date .cal-weekday {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  color: var(--muted);
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+.cal-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--gold);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.cal-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cal-name {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+.cal-meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: baseline;
+}
+.cal-sep { color: rgba(182, 153, 104, 0.45); }
+.cal-time { color: var(--gold); font-family: var(--serif); font-style: italic; font-size: 0.95rem; }
+.cal-place {}
+.cal-format {}
+
+.cal-status {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 12px;
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  align-self: flex-start;
+}
+.cal-status--open { color: var(--gold); border-color: rgba(182, 153, 104, 0.5); }
+.cal-status--limited { color: var(--burgundy); border-color: rgba(92, 30, 38, 0.4); }
+.cal-status--closed { color: var(--muted); border-color: var(--rule); }
+
+.cal-go {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--gold);
+  text-align: right;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.cal-row:hover .cal-go { opacity: 1; transform: translateX(6px); }
+
+.calendar-note {
+  margin-top: 36px;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.calendar-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Бейджи статусов внутри карточек событий (dl.specs) */
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+.badge--open { color: var(--gold); border-color: rgba(182, 153, 104, 0.55); }
+.badge--limited { color: var(--burgundy); border-color: rgba(92, 30, 38, 0.4); }
+.section.dark .badge--limited { color: #d99aa3; border-color: rgba(217, 154, 163, 0.4); }
+.badge--closed { color: var(--muted); }
+
 /* ─── Новый стиль нумерации мероприятий ─── */
 .event-meta-col .num {
   display: inline-flex;
@@ -948,6 +1091,52 @@ footer .footer-meta { color: var(--muted); }
 
   /* SECTION padding */
   .section { padding: 64px 0; }
+
+  /* CALENDAR на мобильном — карточки-билеты */
+  .calendar-section { padding: 60px 0; }
+  .calendar-table {
+    margin-top: 32px;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cal-row {
+    grid-template-columns: 76px 1fr;
+    grid-template-areas:
+      "date  main"
+      "date  status";
+    gap: 6px 18px;
+    padding: 20px 18px;
+    border: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: rgba(182, 153, 104, 0.025);
+    align-items: start;
+  }
+  .cal-row:hover { padding-left: 18px; background: rgba(182, 153, 104, 0.08); }
+
+  .cal-date { grid-area: date; }
+  .cal-date .cal-day { font-size: 2.2rem; }
+  .cal-date .cal-month { font-size: 0.66rem; letter-spacing: 0.32em; margin-top: 4px; }
+  .cal-date .cal-weekday { font-size: 0.7rem; margin-top: 6px; }
+
+  .cal-num { display: none; }
+
+  .cal-main { grid-area: main; gap: 6px; }
+  .cal-name { font-size: 1.05rem; letter-spacing: 0.03em; }
+  .cal-meta { font-size: 0.83rem; gap: 4px 8px; }
+  .cal-time { font-size: 0.88rem; }
+
+  .cal-status {
+    grid-area: status;
+    margin-top: 8px;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    padding: 4px 10px;
+  }
+  .cal-go { display: none; }
+
+  .calendar-note { font-size: 0.88rem; padding: 0 12px; }
 
   /* MANIFESTO — текст в 2 строки за счёт чуть меньшего кегля и плотного межстрочного */
   .manifesto .quote { font-size: 1.5rem; margin: 32px auto 8px; }
