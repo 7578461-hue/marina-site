@@ -999,6 +999,54 @@ footer .footer-meta { color: var(--muted); }
 }
 .calendar-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
 
+/* Ссылка-адрес (открывает Яндекс.Карты) + кнопка «скопировать» */
+.map-link {
+  color: var(--gold);
+  text-decoration: underline;
+  text-decoration-color: rgba(182, 153, 104, 0.4);
+  text-underline-offset: 4px;
+  transition: color 0.3s ease;
+}
+.map-link:hover { color: var(--gold-soft); }
+.section.dark .map-link { color: var(--gold-soft); }
+
+.copy-btn {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 10px;
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  vertical-align: middle;
+}
+.copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+.copy-btn.copied {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(182, 153, 104, 0.08);
+}
+.section.dark .copy-btn { color: rgba(239, 237, 230, 0.7); }
+.section.dark .copy-btn:hover,
+.section.dark .copy-btn.copied { color: var(--gold-soft); border-color: var(--gold-soft); }
+
+.venue {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.venue a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.section.dark .venue a { color: var(--gold-soft); }
+
 /* Бейджи статусов внутри карточек событий (dl.specs) */
 .badge {
   display: inline-block;

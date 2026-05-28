@@ -19,6 +19,30 @@ document.addEventListener('click', function (e) {
   }
 });
 
+// Кнопка «скопировать адрес»
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+  const text = btn.getAttribute('data-copy') || '';
+  if (!text) return;
+  const done = () => {
+    const old = btn.textContent;
+    btn.textContent = 'скопировано';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = old;
+      btn.classList.remove('copied');
+    }, 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => {
+      window.prompt('Скопируйте адрес:', text);
+    });
+  } else {
+    window.prompt('Скопируйте адрес:', text);
+  }
+});
+
 // Topbar transparency
 const topbar = document.getElementById('topbar');
 const onScroll = () => {
