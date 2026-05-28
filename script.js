@@ -19,6 +19,95 @@ document.addEventListener('click', function (e) {
   }
 });
 
+// Кнопка «+ в календарь» — генерирует .ics на лету и инициирует скачивание.
+// На iPhone/Mac откроется системный Календарь, на Android — Google Calendar,
+// на Windows — Outlook. Один файл, без выбора провайдеров.
+(function () {
+  const escapeIcs = (s) => String(s == null ? '' : s)
+    .replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+    .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+
+  const fold = (line) => {
+    // RFC 5545: строки не длиннее 75 октетов; продолжение начинается с пробела.
+    if (line.length <= 75) return line;
+    const chunks = [];
+    let i = 0;
+    while (i < line.length) {
+      chunks.push(line.slice(i, i + 73));
+      i += 73;
+    }
+    return chunks.join('\r\n ');
+  };
+
+  const buildIcs = (opts) => {
+    const now = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    const uid = (Date.now() + '-' + Math.random().toString(36).slice(2, 8)) + '@marina-lodvikova.vercel.app';
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Marina Lodvikova//Calendar//RU',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + uid,
+      'DTSTAMP:' + now,
+    ];
+    if (opts.allday) {
+      // Дата без времени: DTSTART;VALUE=DATE:20260627
+      lines.push('DTSTART;VALUE=DATE:' + opts.allday);
+      // DTEND для all-day = следующий день (эксклюзивный)
+      const y = opts.allday.slice(0, 4);
+      const m = opts.allday.slice(4, 6);
+      const d = opts.allday.slice(6, 8);
+      const next = new Date(Date.UTC(+y, +m - 1, +d + 1));
+      const ne = next.toISOString().slice(0, 10).replace(/-/g, '');
+      lines.push('DTEND;VALUE=DATE:' + ne);
+    } else {
+      lines.push('DTSTART:' + opts.start);
+      lines.push('DTEND:' + opts.end);
+    }
+    lines.push(fold('SUMMARY:' + escapeIcs(opts.title)));
+    if (opts.location) lines.push(fold('LOCATION:' + escapeIcs(opts.location)));
+    if (opts.description) lines.push(fold('DESCRIPTION:' + escapeIcs(opts.description)));
+    lines.push('END:VEVENT');
+    lines.push('END:VCALENDAR');
+    return lines.join('\r\n');
+  };
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.add-cal');
+    if (!btn) return;
+    e.preventDefault();
+    const ics = buildIcs({
+      title: btn.dataset.title,
+      start: btn.dataset.start,
+      end: btn.dataset.end,
+      allday: btn.dataset.allday,
+      location: btn.dataset.location,
+      description: btn.dataset.desc,
+    });
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const safeName = (btn.dataset.title || 'event').replace(/[^а-яА-Яa-zA-Z0-9-]+/g, '-').slice(0, 60);
+    a.download = safeName + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+
+    // Визуальный фидбэк
+    const old = btn.textContent;
+    btn.textContent = '✓ файл скачан';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = old;
+      btn.classList.remove('copied');
+    }, 2200);
+  });
+})();
+
 // Кнопка «скопировать адрес»
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.copy-btn');

@@ -105,6 +105,50 @@ p { font-size: 1rem; line-height: 1.75; }
 }
 .dark .pill { color: var(--cream); border-color: rgba(182, 153, 104, 0.5); }
 
+/* Ряд из CTA «Записаться» + вторичной «+ В календарь» */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+/* Вторичная кнопка «+ В календарь» — тихая, не конкурирует с CTA */
+.add-cal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+.add-cal:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(182, 153, 104, 0.06);
+}
+.add-cal.copied {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(182, 153, 104, 0.12);
+}
+.section.dark .add-cal {
+  color: rgba(239, 237, 230, 0.65);
+  border-color: rgba(201, 181, 138, 0.25);
+}
+.section.dark .add-cal:hover {
+  color: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
 /* CTA */
 .cta {
   display: inline-flex;
@@ -1288,12 +1332,20 @@ footer .footer-meta { color: var(--muted); }
   .event-details summary { font-size: 0.78rem; letter-spacing: 0.25em; padding: 16px 0; }
 
   /* CTA — крупнее тап-зона */
+  .cta-row { gap: 12px; }
   .cta {
     width: 100%;
     justify-content: center;
     padding: 20px 24px;
     font-size: 0.9rem;
     letter-spacing: 0.28em;
+  }
+  .add-cal {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
   }
 
   /* Event visual */
