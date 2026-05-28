@@ -1,13 +1,6 @@
 // Marina Lodvikova — interactions
-
-// При прямом заходе — всегда наверх (отключаем восстановление прошлой позиции скролла).
-// Если в URL есть #event-X — оставляем браузеру родной переход к якорю.
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-if (!window.location.hash) {
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-}
+// (Принудительный скролл-в-верх вынесен в inline-скрипт в <head> index.html,
+// чтобы сработать ДО парсинга body и восстановления скролла браузером.)
 
 // Topbar transparency
 const topbar = document.getElementById('topbar');

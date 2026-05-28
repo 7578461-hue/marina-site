@@ -13,6 +13,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- При любом заходе без явного якоря — открывать сайт сверху.
+       Скрипт в <head> и без defer, чтобы сработать ДО восстановления позиции браузером. -->
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+      // Подстраховка: даже после загрузки картинок/шрифтов держим верх.
+      window.addEventListener('load', function () {
+        if (!window.location.hash) window.scrollTo(0, 0);
+      });
+    }
+  </script>
 </head>
 <body>
 
