@@ -2,6 +2,23 @@
 // (Принудительный скролл-в-верх вынесен в inline-скрипт в <head> index.html,
 // чтобы сработать ДО парсинга body и восстановления скролла браузером.)
 
+// Клики по внутренним якорям: скроллим к секции, но не оставляем #event-X в URL,
+// иначе при следующем открытии браузер откроет сайт там же, а не сверху.
+document.addEventListener('click', function (e) {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const href = a.getAttribute('href');
+  if (!href || href === '#') return;
+  const target = document.querySelector(href);
+  if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Чистим хэш из URL без перезагрузки и без сохранения в истории.
+  if (history.replaceState) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+});
+
 // Topbar transparency
 const topbar = document.getElementById('topbar');
 const onScroll = () => {
