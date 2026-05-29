@@ -106,6 +106,28 @@ p { font-size: 1rem; line-height: 1.75; }
 }
 .dark .pill { color: var(--cream); border-color: rgba(182, 153, 104, 0.5); }
 
+/* Вторичная CTA-ссылка (например «Пройти тест») — тихая, без обводки */
+.cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(182, 153, 104, 0.4);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.cta-ghost:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.cta-ghost .arrow { font-style: normal; font-family: var(--serif); }
+.section.dark .cta-ghost { color: var(--gold-soft); border-color: rgba(201, 181, 138, 0.4); }
+.section.dark .cta-ghost:hover { color: var(--cream); border-color: var(--gold-soft); }
+
 /* Ряд из CTA «Записаться» + вторичной «+ В календарь» */
 .cta-row {
   display: flex;

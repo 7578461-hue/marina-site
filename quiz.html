@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Какой архетип в тебе более проявлен?</title>
+<style>html,body{margin:0;min-height:100%;background:#efe6d6}</style>
+</head>
+<body>
+<!-- ===================== АРХЕТИП-ТЕСТ • приоритизация + профиль ===================== -->
+<!-- ВСТАВЬ ССЫЛКУ НА ТРЕНИНГ: найди ниже id="aq-cta-btn" и замени href="#" на свой адрес. -->
+<div id="aq-root">
+  <div class="aq-card" id="aq-card">
+    <section id="aq-intro">
+      <div class="aq-kicker">Архетипы женщины</div>
+      <div class="aq-rule"></div>
+      <h1 class="aq-title aq-display">Какой архетип<br>более проявлен в тебе?</h1>
+      <div class="aq-sub-it">тест на женскую энергию</div>
+      <p class="aq-lead">10 вопросов о том, как ты живёшь, чувствуешь и выбираешь. В каждом — отметь варианты <b>по порядку близости к тебе</b>: первое нажатие — самое близкое. В конце получишь свой профиль из 4 архетипов.</p>
+      <button class="aq-btn" onclick="aqStart()">Пройти тест</button>
+    </section>
+
+    <section id="aq-quiz" style="display:none">
+      <div class="aq-progress-row">
+        <span class="aq-qcount" id="aq-qcount">01 / 10</span>
+        <span class="aq-bar"><i id="aq-barfill"></i></span>
+      </div>
+      <h2 class="aq-qtext" id="aq-qtext"></h2>
+      <div class="aq-hint">нажимай по порядку — от самого близкого</div>
+      <div id="aq-opts"></div>
+      <button class="aq-btn aq-next" id="aq-next" onclick="aqNext()" disabled>Далее</button>
+    </section>
+
+    <section id="aq-result" style="display:none">
+      <div class="aq-kicker">Твой ведущий архетип</div>
+      <h2 class="aq-r-name aq-display" id="aq-rName"></h2>
+      <div class="aq-r-myth" id="aq-rMyth"></div>
+      <p class="aq-r-quote" id="aq-rQuote"></p>
+      <div class="aq-bars-title">Твой профиль архетипов</div>
+      <div id="aq-bars"></div>
+      <p class="aq-r-desc" id="aq-rDesc"></p>
+      <div class="aq-cta">
+        <p class="aq-cta-text">Это только верхушка. На тренинге ты узнаешь, как раскрыть свой ведущий архетип, пробудить силу всех четырёх и превратить тень в ресурс.</p>
+        <a class="aq-btn" id="aq-cta-btn" href="https://t.me/Diamondmari" target="_blank" rel="noopener" onclick="return aqGoTraining(event)">Хочу глубже — на тренинг</a>
+      </div>
+      <button class="aq-btn aq-ghost" onclick="aqReset()">Пройти заново</button>
+      <a class="aq-btn aq-ghost" href="/" style="display:block;text-decoration:none;margin-top:10px;text-align:center">← К календарю июня</a>
+      <script>
+        // Подставляем результат теста в TG-сообщение
+        function aqGoTraining(e){
+          e.preventDefault();
+          var lead = (document.getElementById('aq-rName')||{}).textContent || '';
+          var msg = 'Здравствуйте, Марина!\n\nПрошла тест на архетипы' +
+                    (lead ? ' — ведущий: ' + lead : '') +
+                    '.\nХочу записаться на «Женские архетипы», 6 июня (11:00–18:00, 20 000 ₽).';
+          window.open('https://t.me/Diamondmari?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+          return false;
+        }
+      </script>
+    </section>
+  </div>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap');
+#aq-root{--cream:#f4ede0;--cream2:#e7dcc6;--ink:#2a2620;--soft:#7a6f5d;--gold:#a8823c;--gold-d:#8a6a30;--line:#d8c8a6;--white:#fffdf8;font-family:'Montserrat',sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;padding:40px 16px;background:radial-gradient(120% 80% at 50% -10%,#faf5ea 0%,#f4ede0 55%,#efe6d6 100%);-webkit-font-smoothing:antialiased}
+#aq-root *{margin:0;padding:0;box-sizing:border-box}
+#aq-root .aq-card{width:100%;max-width:620px;background:rgba(255,253,248,.55);border:1px solid var(--line);border-radius:4px;padding:48px 40px 44px;box-shadow:0 30px 80px -40px rgba(80,60,25,.4);backdrop-filter:blur(2px)}
+#aq-root .aq-kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-d);text-align:center;font-weight:600}
+#aq-root .aq-rule{width:46px;height:1px;background:var(--gold);margin:14px auto 0}
+#aq-root .aq-display{font-family:'Cormorant',serif;color:var(--gold-d);line-height:1.02;font-weight:600}
+#aq-root .aq-title{font-size:clamp(34px,7.4vw,54px);text-align:center;margin:24px 0 4px}
+#aq-root .aq-sub-it{font-family:'Cormorant',serif;font-style:italic;font-size:24px;text-align:center}
+#aq-root .aq-lead{text-align:center;color:var(--soft);font-size:15px;line-height:1.7;margin:26px auto 0;max-width:470px}
+#aq-root .aq-lead b{color:var(--ink);font-weight:600}
+#aq-root .aq-btn{display:block;width:100%;margin-top:24px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:12px;padding:18px;border-radius:2px;transition:.35s ease;text-align:center;text-decoration:none}
+#aq-root .aq-btn:hover{background:var(--gold-d);letter-spacing:.24em}
+#aq-root .aq-btn:disabled{opacity:.35;cursor:not-allowed;background:var(--ink);letter-spacing:.18em}
+#aq-root .aq-btn.aq-ghost{background:transparent;color:var(--gold-d);border:1px solid var(--line)}
+#aq-root .aq-btn.aq-ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+#aq-root #aq-cta-btn{background:var(--gold-d);margin-top:18px}
+#aq-root #aq-cta-btn:hover{background:var(--ink)}
+#aq-root .aq-progress-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+#aq-root .aq-qcount{font-size:12px;letter-spacing:.25em;color:var(--gold-d);font-weight:600}
+#aq-root .aq-bar{flex:1;height:1px;background:var(--line);margin-left:18px;position:relative}
+#aq-root .aq-bar i{position:absolute;left:0;top:0;height:1px;background:var(--gold);width:0;transition:width .4s ease}
+#aq-root .aq-qtext{font-family:'Cormorant',serif;font-size:clamp(28px,6.4vw,38px);line-height:1.18;margin-bottom:10px;font-weight:600;color:var(--ink)}
+#aq-root .aq-hint{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:20px}
+#aq-root .aq-opt{position:relative;width:100%;text-align:left;cursor:pointer;background:rgba(255,253,248,.4);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:17px 56px 17px 20px;margin-bottom:13px;font-size:15.5px;line-height:1.45;font-weight:400;transition:.22s ease;font-family:'Montserrat',sans-serif}
+#aq-root .aq-opt:hover{border-color:var(--gold);background:var(--white)}
+#aq-root .aq-rank{position:absolute;right:16px;top:50%;width:26px;height:26px;margin-top:-13px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--soft);transition:.2s}
+#aq-root .aq-opt.aq-sel{border-color:var(--gold);background:var(--white);box-shadow:inset 0 0 0 1px var(--gold)}
+#aq-root .aq-opt.aq-sel .aq-rank{background:var(--gold-d);border-color:var(--gold-d);color:var(--white)}
+#aq-root #aq-result{text-align:center}
+#aq-root .aq-r-name{font-size:clamp(50px,12.5vw,82px);margin:14px 0 2px}
+#aq-root .aq-r-myth{font-family:'Cormorant',serif;font-style:italic;font-size:22px;color:var(--soft)}
+#aq-root .aq-r-quote{font-family:'Cormorant',serif;font-style:italic;font-size:clamp(21px,5vw,27px);color:var(--ink);margin:22px auto 4px;max-width:460px;line-height:1.3}
+#aq-root .aq-bars-title{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);font-weight:600;margin:34px 0 18px}
+#aq-root #aq-bars{text-align:left;max-width:480px;margin:0 auto}
+#aq-root .aq-bar-row{margin:0 0 16px}
+#aq-root .aq-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+#aq-root .aq-bar-top .nm{font-size:15px;font-weight:600;letter-spacing:.02em}
+#aq-root .aq-bar-top .nm .my{font-family:'Cormorant',serif;font-style:italic;font-weight:500;color:var(--soft);font-size:15px;margin-left:8px}
+#aq-root .aq-bar-top .pc{color:var(--gold-d);font-weight:700;font-size:15px}
+#aq-root .aq-bar-track{height:7px;background:var(--cream2);border-radius:4px;overflow:hidden}
+#aq-root .aq-bar-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,#caa45c,var(--gold-d));transition:width 1s cubic-bezier(.2,.7,.2,1)}
+#aq-root .aq-bar-row.lead .nm{color:var(--gold-d)}
+#aq-root .aq-r-desc{color:var(--soft);font-size:15px;line-height:1.8;max-width:460px;margin:28px auto 0}
+#aq-root .aq-cta{margin-top:30px;padding:28px 24px;background:rgba(168,130,60,.08);border:1px solid var(--line);border-radius:4px}
+#aq-root .aq-cta-text{color:var(--ink);font-size:15px;line-height:1.7;max-width:440px;margin:0 auto}
+#aq-root .aq-fade{animation:aqFade .5s ease}
+@keyframes aqFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:540px){#aq-root .aq-card{padding:36px 22px 32px}}
+</style>
+<script>
+(function(){
+  var Q=[
+   {q:"Что для тебя — дом мечты?",o:[{t:"Пространство для отдыха и удовольствия: свет, ароматы, тишина вдвоём",a:"L"},{t:"Тёплый дом, где пахнет едой и собираются близкие",a:"H"},{t:"База, из которой легко сорваться навстречу новому",a:"D"},{t:"Статусное пространство, отражающее твой уровень",a:"Q"}]},
+   {q:"Как ты чаще проводишь свободный вечер?",o:[{t:"Уход за собой и что-то красивое — для удовольствия",a:"L"},{t:"Создаю уют, готовлю, забочусь о своих",a:"H"},{t:"Спонтанно — куда позовут или куда потянет",a:"D"},{t:"Разбираю идеи, планирую, читаю что-то серьёзное",a:"Q"}]},
+   {q:"За что тебя чаще ценят люди?",o:[{t:"За магнетизм и вкус",a:"L"},{t:"За тепло и надёжность",a:"H"},{t:"За лёгкость и живость",a:"D"},{t:"За мудрость и силу решений",a:"Q"}]},
+   {q:"Твои отношения с деньгами — это про…",o:[{t:"Удовольствие и красоту жизни",a:"L"},{t:"Безопасность и заботу о близких",a:"H"},{t:"Впечатления: легко приходят и уходят",a:"D"},{t:"Свободу выбора и влияние",a:"Q"}]},
+   {q:"Что ты первым замечаешь, входя в комнату?",o:[{t:"Атмосферу, свет, фактуры и ароматы",a:"L"},{t:"Уютно ли здесь, всё ли на местах",a:"H"},{t:"Что нового и интересного можно открыть",a:"D"},{t:"Как всё устроено и кто здесь главный",a:"Q"}]},
+   {q:"Идеальное путешествие:",o:[{t:"Спа, шёлк, чувственные удовольствия",a:"L"},{t:"Дом у моря — готовить и принимать своих",a:"H"},{t:"Рюкзак, импровизация, новые страны",a:"D"},{t:"Культурная столица, статусный отель, смыслы",a:"Q"}]},
+   {q:"В сложной ситуации ты скорее…",o:[{t:"Доверишься чувствам и подействуешь мягко",a:"L"},{t:"Наведёшь порядок и позаботишься обо всех",a:"H"},{t:"Поищешь неожиданный, лёгкий выход",a:"D"},{t:"Возьмёшь ответственность и примешь решение",a:"Q"}]},
+   {q:"Твой гардероб — это прежде всего…",o:[{t:"Ткани и силуэт, что подчёркивают тебя",a:"L"},{t:"Комфорт, тепло и натуральность",a:"H"},{t:"Лёгкость и что-нибудь новенькое",a:"D"},{t:"Чистые линии и безупречность",a:"Q"}]},
+   {q:"Что по-настоящему тебя наполняет?",o:[{t:"Близость, красота, наслаждение",a:"L"},{t:"Дом, семья, забота",a:"H"},{t:"Новизна, игра, творчество",a:"D"},{t:"Смысл, развитие, влияние",a:"Q"}]},
+   {q:"Какая фраза тебе ближе?",o:[{t:"«Я позволяю себе чувствовать и наслаждаться»",a:"L"},{t:"«Я создаю пространство, где растут люди»",a:"H"},{t:"«Я верю, мечтаю и начинаю заново»",a:"D"},{t:"«Я знаю себе цену и выбираю свою жизнь»",a:"Q"}]}
+  ];
+  var R={
+   L:{name:"Любовница",myth:"Афродита",quote:"«Притягивает, а не добивается»",desc:"Ты чувствуешь жизнь во всех её проявлениях и наполняешь пространство собой. Твоя сила — в присутствии и удовольствии, а не в усилии."},
+   H:{name:"Хозяйка",myth:"Деметра",quote:"«Создаёт мир, куда хочется возвращаться»",desc:"Ты превращаешь хаос в дом и тепло. Рядом с тобой люди растут, отдыхают и чувствуют опору."},
+   D:{name:"Девочка",myth:"Персефона",quote:"«Живёт из радости, а не из долга»",desc:"Ты веришь, мечтаешь и начинаешь заново. Твоя сила — видеть возможности там, где другие видят стены."},
+   Q:{name:"Королева",myth:"Гера",quote:"«Знает себе цену и выбирает свою жизнь»",desc:"Ты создаёшь свою жизнь осознанно. Твоя сила — в ясности, границах и масштабе видения."}
+  };
+  var ORDER=["L","H","D","Q"],idx=0,scores={L:0,H:0,D:0,Q:0},current=[],order=[];
+  function $(id){return document.getElementById(id);}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0;var x=a[i];a[i]=a[j];a[j]=x;}return a;}
+  function pad(n){return (n<10?'0':'')+n;}
+  function render(){
+    var item=Q[idx]; current=shuffle(item.o); order=[];
+    $('aq-qcount').textContent=pad(idx+1)+' / '+pad(Q.length);
+    $('aq-barfill').style.width=(idx/Q.length*100)+'%';
+    $('aq-qtext').textContent=item.q;
+    var box=$('aq-opts'); box.innerHTML='';
+    current.forEach(function(op,i){
+      var b=document.createElement('button');
+      b.className='aq-opt'; b.setAttribute('data-i',i);
+      b.innerHTML=op.t+'<span class="aq-rank"></span>';
+      b.onclick=function(){toggle(i);};
+      box.appendChild(b);
+    });
+    var nx=$('aq-next'); nx.textContent=(idx===Q.length-1?'Узнать результат':'Далее'); nx.disabled=true;
+    var qz=$('aq-quiz'); qz.classList.remove('aq-fade'); void qz.offsetWidth; qz.classList.add('aq-fade');
+  }
+  function toggle(i){
+    var p=order.indexOf(i);
+    if(p>-1){order.splice(p,1);} else {order.push(i);}
+    var btns=$('aq-opts').children;
+    for(var k=0;k<btns.length;k++){
+      var oi=+btns[k].getAttribute('data-i');
+      var pos=order.indexOf(oi);
+      var badge=btns[k].querySelector('.aq-rank');
+      if(pos>-1){btns[k].classList.add('aq-sel'); badge.textContent=pos+1;}
+      else{btns[k].classList.remove('aq-sel'); badge.textContent='';}
+    }
+    $('aq-next').disabled = order.length===0;
+  }
+  window.aqNext=function(){
+    if(order.length===0) return;
+    var N=current.length;
+    order.forEach(function(i,pos){ scores[current[i].a]+= (N-pos); }); // 1-е=4, 2-е=3, 3-е=2, 4-е=1
+    idx++;
+    if(idx<Q.length){render();} else {finish();}
+  };
+  function finish(){
+    $('aq-barfill').style.width='100%';
+    var total=0; ORDER.forEach(function(k){total+=scores[k];}); if(total===0)total=1;
+    var arr=ORDER.map(function(k){return {k:k,v:scores[k],p:Math.round(scores[k]/total*100)};});
+    arr.sort(function(a,b){return b.v-a.v;});
+    var lead=arr[0].k, r=R[lead];
+    $('aq-rName').textContent=r.name; $('aq-rMyth').textContent=r.myth; $('aq-rQuote').textContent=r.quote; $('aq-rDesc').textContent=r.desc;
+    var box=$('aq-bars'); box.innerHTML='';
+    arr.forEach(function(it,n){
+      var row=document.createElement('div'); row.className='aq-bar-row'+(n===0?' lead':'');
+      row.innerHTML='<div class="aq-bar-top"><span class="nm">'+R[it.k].name+'<span class="my">'+R[it.k].myth+'</span></span><span class="pc">'+it.p+'%</span></div><div class="aq-bar-track"><i></i></div>';
+      box.appendChild(row);
+    });
+    $('aq-quiz').style.display='none';
+    var res=$('aq-result'); res.style.display='block'; res.classList.add('aq-fade');
+    setTimeout(function(){
+      var fills=box.querySelectorAll('.aq-bar-track i');
+      arr.forEach(function(it,n){ if(fills[n]) fills[n].style.width=it.p+'%'; });
+    },120);
+  }
+  window.aqStart=function(){idx=0;scores={L:0,H:0,D:0,Q:0};$('aq-intro').style.display='none';$('aq-quiz').style.display='block';render();};
+  window.aqReset=function(){$('aq-result').style.display='none';var i=$('aq-intro');i.style.display='block';i.classList.add('aq-fade');};
+})();
+</script>
+<!-- =================== /АРХЕТИП-ТЕСТ =================== -->
+
+</body>
+</html>
