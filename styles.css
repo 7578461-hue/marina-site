@@ -477,7 +477,14 @@ p { font-size: 1rem; line-height: 1.75; }
   line-height: 1.45;
 }
 .section.dark .event-meta-col .question { color: rgba(239, 237, 230, 0.65); }
-.event-meta-col p { margin-bottom: 22px; }
+.event-meta-col p {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--sepia);
+  margin-bottom: 22px;
+}
+.section.dark .event-meta-col p { color: rgba(239, 237, 230, 0.85); }
 
 /* dl.specs — компактный «оригинальный» формат без линий */
 .event-meta-col .specs {
@@ -499,7 +506,7 @@ p { font-size: 1rem; line-height: 1.75; }
 .event-meta-col .specs dd {
   margin: 0;
   font-family: var(--serif);
-  color: var(--ink);
+  color: var(--sepia);
   line-height: 1.4;
 }
 .section.dark .event-meta-col .specs dd { color: var(--cream); }
@@ -552,13 +559,16 @@ p { font-size: 1rem; line-height: 1.75; }
 .event-details ul li {
   padding: 6px 0 6px 22px;
   position: relative;
-  font-size: 0.93rem;
-  line-height: 1.6;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--sepia);
 }
+.section.dark .event-details ul li { color: rgba(239, 237, 230, 0.85); }
 .event-details ul li::before {
   content: "";
   position: absolute;
-  left: 0; top: 14px;
+  left: 0; top: 16px;
   width: 12px; height: 1px;
   background: var(--gold);
 }
@@ -1009,7 +1019,7 @@ footer .footer-meta { color: var(--muted); }
 .cal-meta dd {
   margin: 0;
   font-family: var(--serif);
-  color: var(--ink);
+  color: var(--sepia);
   line-height: 1.35;
 }
 
