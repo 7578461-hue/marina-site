@@ -479,18 +479,18 @@ p { font-size: 1rem; line-height: 1.75; }
 .section.dark .event-meta-col .question { color: rgba(239, 237, 230, 0.65); }
 .event-meta-col p {
   font-family: var(--serif);
-  font-size: 1.08rem;
+  font-size: 1rem;
   line-height: 1.55;
   color: var(--sepia);
   margin-bottom: 22px;
 }
 .section.dark .event-meta-col p { color: rgba(239, 237, 230, 0.85); }
 
-/* dl.specs — только значения, без меток (метки скрыты, чтобы не отвлекали) */
+/* dl.specs — только значения, компактный шрифт как в первоначальной версии */
 .event-meta-col .specs {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   margin: 28px 0 36px;
 }
 .event-meta-col .specs .spec-row { display: block; }
@@ -498,9 +498,9 @@ p { font-size: 1rem; line-height: 1.75; }
 .event-meta-col .specs dd {
   margin: 0;
   font-family: var(--serif);
-  font-size: 1.08rem;
+  font-size: 0.95rem;
   color: var(--sepia);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .section.dark .event-meta-col .specs dd { color: var(--cream); }
 
@@ -553,7 +553,7 @@ p { font-size: 1rem; line-height: 1.75; }
   padding: 6px 0 6px 22px;
   position: relative;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   color: var(--sepia);
 }
@@ -561,7 +561,7 @@ p { font-size: 1rem; line-height: 1.75; }
 .event-details ul li::before {
   content: "";
   position: absolute;
-  left: 0; top: 16px;
+  left: 0; top: 14px;
   width: 12px; height: 1px;
   background: var(--gold);
 }
@@ -1002,9 +1002,9 @@ footer .footer-meta { color: var(--muted); }
 .cal-meta dd {
   margin: 0;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--sepia);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* Цена в карточке обзорного календаря */
