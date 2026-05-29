@@ -1066,6 +1066,28 @@ footer .footer-meta { color: var(--muted); }
 }
 .cal-row:hover .cal-go { opacity: 1; transform: translateX(6px); }
 
+/* Ссылка на тест — прицепляется снизу к строке Архетипов */
+.cal-quiz {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: -8px 0 14px;
+  padding: 6px 12px 6px 156px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  align-self: flex-start;
+}
+.cal-quiz:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.cal-quiz .arrow { font-style: normal; }
+
 .calendar-final {
   margin-top: 56px;
   text-align: center;
@@ -1313,6 +1335,13 @@ footer .footer-meta { color: var(--muted); }
     padding: 4px 10px;
   }
   .cal-go { display: none; }
+
+  .cal-quiz {
+    padding: 12px 18px;
+    margin: -8px 0 14px;
+    font-size: 0.9rem;
+    align-self: center;
+  }
 
   .calendar-note { font-size: 0.88rem; padding: 0 12px; }
 
