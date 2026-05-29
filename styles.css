@@ -991,6 +991,18 @@ footer .footer-meta { color: var(--muted); }
 .cal-place {}
 .cal-format {}
 
+/* Цена в карточке обзорного календаря */
+.cal-price {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
 .cal-status {
   display: inline-block;
   margin-top: 4px;
@@ -1090,6 +1102,15 @@ footer .footer-meta { color: var(--muted); }
 }
 .venue a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
 .section.dark .venue a { color: var(--gold-soft); }
+
+/* Цена внутри подробной карточки */
+.price {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
 
 /* Бейджи статусов внутри карточек событий (dl.specs) */
 .badge {
