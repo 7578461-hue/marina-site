@@ -1066,27 +1066,49 @@ footer .footer-meta { color: var(--muted); }
 }
 .cal-row:hover .cal-go { opacity: 1; transform: translateX(6px); }
 
-/* Ссылка на тест — прицепляется снизу к строке Архетипов */
+/* Приглашение пройти тест — карточка-баннер над архетипами */
 .cal-quiz {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  margin: -8px 0 14px;
-  padding: 6px 12px 6px 156px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--gold);
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 28px;
+  margin-bottom: 18px;
+  border: 1px solid var(--rule);
+  background: rgba(182, 153, 104, 0.04);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  align-self: flex-start;
+  color: var(--ink);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 .cal-quiz:hover {
-  color: var(--ink);
+  background: rgba(182, 153, 104, 0.1);
   border-color: var(--gold);
+  transform: translateY(-2px);
 }
-.cal-quiz .arrow { font-style: normal; }
+.cal-quiz-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cal-quiz-line1 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+.cal-quiz-line2 {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cal-quiz .arrow {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--gold);
+}
 
 .calendar-final {
   margin-top: 56px;
@@ -1337,11 +1359,13 @@ footer .footer-meta { color: var(--muted); }
   .cal-go { display: none; }
 
   .cal-quiz {
-    padding: 12px 18px;
-    margin: -8px 0 14px;
-    font-size: 0.9rem;
-    align-self: center;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    gap: 14px;
   }
+  .cal-quiz-line1 { font-size: 1rem; }
+  .cal-quiz-line2 { font-size: 0.72rem; letter-spacing: 0.24em; }
+  .cal-quiz .arrow { font-size: 1.2rem; }
 
   .calendar-note { font-size: 0.88rem; padding: 0 12px; }
 
