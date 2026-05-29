@@ -999,10 +999,11 @@ footer .footer-meta { color: var(--muted); }
 }
 .cal-meta dd {
   margin: 0;
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-weight: 400;
+  font-size: 1.05rem;
   color: var(--ink);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 /* Цена в карточке обзорного календаря */
