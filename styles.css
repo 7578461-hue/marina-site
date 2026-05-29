@@ -478,12 +478,18 @@ p { font-size: 1rem; line-height: 1.75; }
 .section.dark .event-meta-col .question { color: rgba(239, 237, 230, 0.65); }
 .event-meta-col p { margin-bottom: 22px; }
 
+/* dl.specs — «меню старого ресторана»: каждая строка отделена тонкой золотой линией */
 .event-meta-col .specs {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 14px 28px;
+  gap: 0;
   margin: 28px 0 36px;
-  font-size: 0.85rem;
+  border-top: 1px solid rgba(182, 153, 104, 0.3);
+}
+.event-meta-col .specs dt,
+.event-meta-col .specs dd {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(182, 153, 104, 0.3);
 }
 .event-meta-col .specs dt {
   font-family: var(--serif);
@@ -491,10 +497,22 @@ p { font-size: 1rem; line-height: 1.75; }
   text-transform: uppercase;
   color: var(--gold);
   font-size: 0.78rem;
-  padding-top: 3px;
+  padding-right: 32px;
+  align-self: center;
 }
-.event-meta-col .specs dd { color: var(--ink); }
+.event-meta-col .specs dd {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  color: var(--navy);
+  line-height: 1.4;
+  align-self: center;
+}
+.section.dark .event-meta-col .specs dt,
+.section.dark .event-meta-col .specs dd {
+  border-bottom-color: rgba(201, 181, 138, 0.22);
+}
 .section.dark .event-meta-col .specs dd { color: var(--cream); }
+.section.dark .event-meta-col .specs { border-top-color: rgba(201, 181, 138, 0.22); }
 
 /* Списки внутри события */
 .event-details {
@@ -978,14 +996,20 @@ footer .footer-meta { color: var(--muted); }
   color: var(--ink);
   margin: 0;
 }
-/* Метаданные строки календаря — структурированы как dl: метка/значение */
+/* Метаданные строки календаря — «меню»: золотые метки, навигационные значения, разделители */
 .cal-meta {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 6px 18px;
+  gap: 0;
   margin: 0;
   padding: 0;
-  font-size: 0.9rem;
+  border-top: 1px solid rgba(182, 153, 104, 0.28);
+}
+.cal-meta dt,
+.cal-meta dd {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(182, 153, 104, 0.28);
+  align-self: center;
 }
 .cal-meta dt {
   font-family: var(--serif);
@@ -994,15 +1018,15 @@ footer .footer-meta { color: var(--muted); }
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 400;
-  padding-top: 4px;
+  padding-right: 18px;
   white-space: nowrap;
 }
 .cal-meta dd {
   margin: 0;
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 1.05rem;
-  color: var(--ink);
+  font-size: 1.02rem;
+  color: var(--navy);
   line-height: 1.35;
 }
 
