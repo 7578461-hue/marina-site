@@ -108,6 +108,17 @@ document.addEventListener('click', function (e) {
   });
 })();
 
+// Кнопки-CTA в Telegram: при клике формируется t.me/Diamondmari?text=<encoded>
+document.addEventListener('click', function (e) {
+  const a = e.target.closest('a.tg-cta');
+  if (!a) return;
+  const tpl = a.getAttribute('data-tg');
+  if (!tpl) return;
+  e.preventDefault();
+  const url = 'https://t.me/Diamondmari?text=' + encodeURIComponent(tpl);
+  window.open(url, '_blank', 'noopener');
+});
+
 // Кнопка «скопировать адрес»
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.copy-btn');
