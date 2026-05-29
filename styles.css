@@ -12,6 +12,7 @@
   --gold-soft: #C9B58A;
   --navy: #1A2236;
   --burgundy: #5C1E26;
+  --sepia: #4A3A28;
   --muted: #7A746A;
   --rule: rgba(182, 153, 104, 0.35);
 
@@ -478,16 +479,17 @@ p { font-size: 1rem; line-height: 1.75; }
 .section.dark .event-meta-col .question { color: rgba(239, 237, 230, 0.65); }
 .event-meta-col p { margin-bottom: 22px; }
 
-/* dl.specs — «меню старого ресторана»: каждая строка отделена тонкой золотой линией */
+/* dl.specs — «меню старого ресторана»: каждая строка = один .spec-row,
+   разделитель идёт по всему .spec-row → одна непрерывная золотая линия */
 .event-meta-col .specs {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0;
   margin: 28px 0 36px;
   border-top: 1px solid rgba(182, 153, 104, 0.3);
 }
-.event-meta-col .specs dt,
-.event-meta-col .specs dd {
+.event-meta-col .specs .spec-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  align-items: center;
   padding: 16px 0;
   border-bottom: 1px solid rgba(182, 153, 104, 0.3);
 }
@@ -497,22 +499,19 @@ p { font-size: 1rem; line-height: 1.75; }
   text-transform: uppercase;
   color: var(--gold);
   font-size: 0.78rem;
-  padding-right: 32px;
-  align-self: center;
 }
 .event-meta-col .specs dd {
+  margin: 0;
   font-family: var(--serif);
-  font-size: 1.02rem;
-  color: var(--navy);
+  font-size: 1.05rem;
+  color: var(--sepia);
   line-height: 1.4;
-  align-self: center;
 }
-.section.dark .event-meta-col .specs dt,
-.section.dark .event-meta-col .specs dd {
-  border-bottom-color: rgba(201, 181, 138, 0.22);
+.section.dark .event-meta-col .specs,
+.section.dark .event-meta-col .specs .spec-row {
+  border-color: rgba(201, 181, 138, 0.22);
 }
 .section.dark .event-meta-col .specs dd { color: var(--cream); }
-.section.dark .event-meta-col .specs { border-top-color: rgba(201, 181, 138, 0.22); }
 
 /* Списки внутри события */
 .event-details {
@@ -996,20 +995,19 @@ footer .footer-meta { color: var(--muted); }
   color: var(--ink);
   margin: 0;
 }
-/* Метаданные строки календаря — «меню»: золотые метки, навигационные значения, разделители */
+/* cal-meta — то же «меню», непрерывные линии через .spec-row */
 .cal-meta {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0;
   margin: 0;
   padding: 0;
   border-top: 1px solid rgba(182, 153, 104, 0.28);
 }
-.cal-meta dt,
-.cal-meta dd {
+.cal-meta .spec-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid rgba(182, 153, 104, 0.28);
-  align-self: center;
 }
 .cal-meta dt {
   font-family: var(--serif);
@@ -1018,7 +1016,6 @@ footer .footer-meta { color: var(--muted); }
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 400;
-  padding-right: 18px;
   white-space: nowrap;
 }
 .cal-meta dd {
@@ -1026,7 +1023,7 @@ footer .footer-meta { color: var(--muted); }
   font-family: var(--serif);
   font-weight: 400;
   font-size: 1.02rem;
-  color: var(--navy);
+  color: var(--sepia);
   line-height: 1.35;
 }
 
