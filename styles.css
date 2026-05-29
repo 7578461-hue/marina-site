@@ -499,7 +499,7 @@ p { font-size: 1rem; line-height: 1.75; }
 .event-meta-col .specs dd {
   margin: 0;
   font-family: var(--serif);
-  color: var(--sepia);
+  color: var(--ink);
   line-height: 1.4;
 }
 .section.dark .event-meta-col .specs dd { color: var(--cream); }
@@ -1009,7 +1009,7 @@ footer .footer-meta { color: var(--muted); }
 .cal-meta dd {
   margin: 0;
   font-family: var(--serif);
-  color: var(--sepia);
+  color: var(--ink);
   line-height: 1.35;
 }
 
