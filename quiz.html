@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Какой архетип в тебе более проявлен?</title>
 <style>html,body{margin:0;min-height:100%;background:#efe6d6}</style>
+
+<!-- Yandex.Metrica — поменяй YM_ID когда счётчик готов (то же число что в index.html) -->
+<script>window.YM_ID = 0;</script>
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){if(!window.YM_ID)return;m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  if (window.YM_ID) {
+    ym(window.YM_ID, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+  }
+  window.ymGoal = function(name, params){
+    if (window.YM_ID && window.ym) try { ym(window.YM_ID, 'reachGoal', name, params||{}); } catch(e){}
+  };
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
 <!-- ===================== АРХЕТИП-ТЕСТ • приоритизация + профиль ===================== -->
@@ -49,7 +66,7 @@
       <a class="aq-btn aq-ghost" href="/" style="display:block;text-decoration:none;margin-top:10px;text-align:center">← К календарю июня</a>
       <script>
         // Подменяем href кнопки СРАЗУ после показа результата — подставляем ведущий архетип.
-        // Используем event listener (надёжнее чем inline onclick).
+        // Также шлём цели в Яндекс.Метрику: quiz_start, quiz_completed, quiz_to_tg.
         (function(){
           function updateCtaHref(){
             var btn = document.getElementById('aq-cta-btn');
@@ -61,15 +78,32 @@
                     + '6 июня (11:00–18:00, 20 000 ₽).';
             btn.href = 'https://t.me/Diamondmari?text=' + encodeURIComponent(msg);
           }
-          // Обновляем href при каждом клике (на случай, если архетип определился позже)
+          // Цели: клик «Пройти тест» (старт) + клик финальной CTA → передаём архетип параметром
           document.addEventListener('click', function(e){
+            // quiz_start — любая кнопка на интро
+            if (e.target.matches && e.target.matches('.aq-btn[onclick*="aqStart"]')) {
+              if (window.ymGoal) window.ymGoal('quiz_start');
+            }
+            // quiz_to_tg + архетип
             var btn = e.target.closest && e.target.closest('#aq-cta-btn');
-            if (btn) updateCtaHref();
+            if (btn) {
+              updateCtaHref();
+              var lead = (document.getElementById('aq-rName')||{}).textContent || '';
+              if (window.ymGoal) window.ymGoal('quiz_to_tg', {archetype: lead || 'unknown'});
+            }
           }, true);
-          // И сразу после показа результата
+          // При показе экрана с результатом — quiz_completed + обновляем href
+          var completed = false;
           var obs = new MutationObserver(function(){
             var r = document.getElementById('aq-result');
-            if (r && getComputedStyle(r).display !== 'none') updateCtaHref();
+            if (r && getComputedStyle(r).display !== 'none') {
+              updateCtaHref();
+              if (!completed) {
+                completed = true;
+                var lead = (document.getElementById('aq-rName')||{}).textContent || '';
+                if (window.ymGoal) window.ymGoal('quiz_completed', {archetype: lead || 'unknown'});
+              }
+            }
           });
           obs.observe(document.body, {attributes:true, subtree:true, attributeFilter:['style']});
         })();

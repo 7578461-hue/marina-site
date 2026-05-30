@@ -1,4 +1,29 @@
 // Marina Lodvikova — interactions
+
+// ───── Аналитика: универсальный делегат для data-goal ─────
+// Любой клик по элементу с data-goal="..." отправляется в Метрику.
+document.addEventListener('click', function (e) {
+  var t = e.target.closest && e.target.closest('[data-goal]');
+  if (!t || !window.ymGoal) return;
+  window.ymGoal(t.getAttribute('data-goal'));
+}, true);
+
+// Цель scroll_75: пользователь долистал страницу до 75%.
+(function () {
+  var fired = false;
+  function check() {
+    if (fired) return;
+    var sc = window.scrollY || document.documentElement.scrollTop;
+    var dh = document.documentElement.scrollHeight - window.innerHeight;
+    if (dh > 0 && sc / dh >= 0.75) {
+      fired = true;
+      if (window.ymGoal) window.ymGoal('scroll_75');
+      window.removeEventListener('scroll', check);
+    }
+  }
+  window.addEventListener('scroll', check, { passive: true });
+})();
+
 // (Принудительный скролл-в-верх вынесен в inline-скрипт в <head> index.html,
 // чтобы сработать ДО парсинга body и восстановления скролла браузером.)
 

@@ -26,6 +26,27 @@
       });
     }
   </script>
+
+  <!-- ───── Yandex.Metrica ─────
+       Чтобы включить: поменяй YM_ID ниже на номер своего счётчика (целое число).
+       Зарегистрировать: https://metrica.yandex.ru → новый счётчик → включи Вебвизор. -->
+  <script>window.YM_ID = 0; /* ← вставь сюда номер счётчика (например 98765432) */</script>
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){if(!window.YM_ID)return;m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    if (window.YM_ID) {
+      ym(window.YM_ID, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+    }
+    // Глобальный helper: безопасно дёргается даже если YM_ID не задан.
+    window.ymGoal = function(name, params){
+      if (window.YM_ID && window.ym) try { ym(window.YM_ID, 'reachGoal', name, params||{}); } catch(e){}
+    };
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
+  <!-- ───── /Yandex.Metrica ───── -->
 </head>
 <body>
 
@@ -38,7 +59,7 @@
       <a href="#manifesto">Концепция</a>
       <a href="#event-1">События</a>
       <a class="tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя.">Записаться</a>
+         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя." data-goal="cta_telegram_general">Записаться</a>
     </nav>
   </header>
 
@@ -109,7 +130,7 @@
       <div class="calendar-table reveal" role="table" aria-label="Календарь мероприятий июня 2026">
 
         <!-- Приглашение пройти тест перед первым событием -->
-        <a class="cal-quiz" href="quiz.html" target="_blank" rel="noopener">
+        <a class="cal-quiz" href="quiz.html" target="_blank" rel="noopener" data-goal="quiz_open">
           <span class="cal-quiz-text">
             <span class="cal-quiz-line1">Пройди тест</span>
             <span class="cal-quiz-line2">Определи свой ведущий архетип</span>
@@ -234,7 +255,7 @@
 
       </div>
 
-      <p class="calendar-note reveal">Запись&nbsp;— через&nbsp;<a class="tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener" data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя.">Telegram&nbsp;@Diamondmari</a>. Точное время и&nbsp;адреса уточняются дополнительно.</p>
+      <p class="calendar-note reveal">Запись&nbsp;— через&nbsp;<a class="tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener" data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя." data-goal="cta_telegram_general">Telegram&nbsp;@Diamondmari</a>. Точное время и&nbsp;адреса уточняются дополнительно.</p>
     </div>
   </section>
 
@@ -335,8 +356,8 @@
 
           <div class="cta-row">
             <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на «Женские архетипы», 6 июня (11:00–18:00, 20 000 ₽).">Записаться <span class="arrow">→</span></a>
-            <a class="cta-ghost" href="quiz.html" target="_blank" rel="noopener">Пройти тест на&nbsp;архетип <span class="arrow">→</span></a>
+               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на «Женские архетипы», 6 июня (11:00–18:00, 20 000 ₽)." data-goal="cta_telegram_arhetipy">Записаться <span class="arrow">→</span></a>
+            <a class="cta-ghost" href="quiz.html" target="_blank" rel="noopener" data-goal="quiz_open">Пройти тест на&nbsp;архетип <span class="arrow">→</span></a>
           </div>
         </div>
 
@@ -357,7 +378,7 @@
           <dl class="specs">
             <div class="spec-row"><dt>Дата</dt><dd>11 июня, среда</dd></div>
             <div class="spec-row"><dt>Время</dt><dd>18:00&nbsp;— 21:00</dd></div>
-            <div class="spec-row"><dt>Место</dt><dd><a class="map-link" href="https://yandex.ru/maps/?text=Москва, 2-я Черногрязская, 6к1" target="_blank" rel="noopener">Москва, 2-я&nbsp;Черногрязская, 6к1</a> <button type="button" class="copy-btn" data-copy="Москва, 2-я Черногрязская, 6к1" aria-label="Скопировать адрес">скопировать</button><br/><span class="venue"><a href="https://pheromonewomen.com/contacts" target="_blank" rel="noopener">Pheromone</a></span></dd></div>
+            <div class="spec-row"><dt>Место</dt><dd><a class="map-link" href="https://yandex.ru/maps/?text=Москва, 2-я Черногрязская, 6к1" target="_blank" rel="noopener" data-goal="map_opened">Москва, 2-я&nbsp;Черногрязская, 6к1</a> <button type="button" class="copy-btn" data-copy="Москва, 2-я Черногрязская, 6к1" aria-label="Скопировать адрес" data-goal="address_copied">скопировать</button><br/><span class="venue"><a href="https://pheromonewomen.com/contacts" target="_blank" rel="noopener">Pheromone</a></span></dd></div>
             <div class="spec-row"><dt>Формат</dt><dd>Камерная VIP мини-группа · мужчины и&nbsp;женщины</dd></div>
             <div class="spec-row"><dt>Стоимость</dt><dd><span class="price">35&nbsp;000&nbsp;₽</span></dd></div>
             <div class="spec-row"><dt>Запись</dt><dd><span class="badge badge--open">Идёт запись</span></dd></div>
@@ -395,7 +416,7 @@
 
           <div class="cta-row">
             <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на телесную практику дыхания, 11 июня (18:00–21:00, 35 000 ₽). Пространство Pheromone Women, Москва, 2-я Черногрязская, 6к1.">Записаться <span class="arrow">→</span></a>
+               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на телесную практику дыхания, 11 июня (18:00–21:00, 35 000 ₽). Пространство Pheromone Women, Москва, 2-я Черногрязская, 6к1." data-goal="cta_telegram_dyhanie">Записаться <span class="arrow">→</span></a>
           </div>
         </div>
 
@@ -474,7 +495,7 @@
 
           <div class="cta-row">
             <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на «Гейшу Advanced», 13 июня (11:00–18:00, 35 000 ₽).&#10;Базовую игру уже проходил(а).">Записаться <span class="arrow">→</span></a>
+               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на «Гейшу Advanced», 13 июня (11:00–18:00, 35 000 ₽).&#10;Базовую игру уже проходил(а)." data-goal="cta_telegram_geisha">Записаться <span class="arrow">→</span></a>
           </div>
         </div>
 
@@ -533,7 +554,7 @@
 
           <div class="cta-row">
             <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на бизнес-ужин «Мягкая сила», 18 июня (18:00–21:00, 10 000 ₽).">Записаться <span class="arrow">→</span></a>
+               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу записаться на бизнес-ужин «Мягкая сила», 18 июня (18:00–21:00, 10 000 ₽)." data-goal="cta_telegram_uzhin">Записаться <span class="arrow">→</span></a>
           </div>
         </div>
 
@@ -620,7 +641,7 @@
 
           <div class="cta-row">
             <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про мастер-группу, старт 27 июня (200 000 ₽).&#10;Расскажите, пожалуйста, про программу, формат встреч и условия участия.">Узнать подробнее <span class="arrow">→</span></a>
+               data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про мастер-группу, старт 27 июня (200 000 ₽).&#10;Расскажите, пожалуйста, про программу, формат встреч и условия участия." data-goal="cta_telegram_master">Узнать подробнее <span class="arrow">→</span></a>
           </div>
         </div>
 
@@ -636,7 +657,7 @@
       <h2>Не просто понять себя.<br/>А&nbsp;начать <em>создавать ту жизнь,</em><br/>которую вы&nbsp;действительно хотите проживать.</h2>
       <p>Если у&nbsp;вас остались вопросы или вы&nbsp;хотите подобрать формат под себя — напишите напрямую.</p>
       <a class="cta tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя.">Связаться лично <span class="arrow">→</span></a>
+         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя." data-goal="cta_telegram_general">Связаться лично <span class="arrow">→</span></a>
     </div>
   </section>
 
@@ -646,7 +667,7 @@
       <div class="footer-meta">Москва · 2026</div>
       <div class="footer-brand">Marina Lodvikova</div>
       <a class="footer-tg tg-cta" href="https://t.me/Diamondmari" target="_blank" rel="noopener"
-         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя.">Telegram @Diamondmari</a>
+         data-tg="Здравствуйте, Марина!&#10;&#10;Пишу с сайта — хочу узнать подробнее про события июня и подобрать формат под себя." data-goal="cta_telegram_general">Telegram @Diamondmari</a>
     </div>
   </footer>
 
