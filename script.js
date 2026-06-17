@@ -133,14 +133,14 @@ document.addEventListener('click', function (e) {
   });
 })();
 
-// Кнопки-CTA в Telegram: при клике формируется t.me/Diamondmari?text=<encoded>
+// Кнопки-CTA в Telegram: при клике формируется t.me/Marina_Lodvikova?text=<encoded>
 document.addEventListener('click', function (e) {
   const a = e.target.closest('a.tg-cta');
   if (!a) return;
   const tpl = a.getAttribute('data-tg');
   if (!tpl) return;
   e.preventDefault();
-  const url = 'https://t.me/Diamondmari?text=' + encodeURIComponent(tpl);
+  const url = 'https://t.me/Marina_Lodvikova?text=' + encodeURIComponent(tpl);
   window.open(url, '_blank', 'noopener');
 });
 
